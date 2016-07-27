@@ -15,7 +15,6 @@ class MyTableViewController: UITableViewController {
     var conversations: [CKRecord] = []
     var refresh: UIRefreshControl!
     var addAlertSaveAction: UIAlertAction?
-    //var player: AVAudioPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +28,9 @@ class MyTableViewController: UITableViewController {
         
         dispatch_async(dispatch_get_main_queue()) { 
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyTableViewController.loadData), name: "performReload", object: nil)
-            //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyTableViewController.playSound), name: "playTheSound", object: nil)
         }
         
         loadData()
-        //playSound()
     }
     
     func loadData() {
@@ -51,24 +48,6 @@ class MyTableViewController: UITableViewController {
             }
         }
     }
-    
-//    func playSound() {
-//        
-//        if let url = NSBundle.mainBundle().URLForResource("NotificationSound", withExtension: "m4a") {
-//            //let url = NSURL(fileURLWithPath: path)
-//            do {
-//                player = try AVAudioPlayer(contentsOfURL: url, fileTypeHint: nil)
-//                guard let player = player else { return }
-//                
-//                //player.prepareToPlay()
-//                player.play()
-//            } catch let error as NSError {
-//                print("We made it to the Catch statment \(error.description)")
-//            }
-//        } else {
-//            print("Couldn't find the sound file")
-//        }
-//    }
     
     // This function will enable our 'Send' button in our alert when the text has at least one character
     func handleTextFieldDidChangeNotification(notification: NSNotification) {
